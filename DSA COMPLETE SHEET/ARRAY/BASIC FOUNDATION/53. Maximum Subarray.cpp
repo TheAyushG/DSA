@@ -1,0 +1,20 @@
+Time - o(n)
+space - O(1)
+------------------------------------------------------------
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+
+        int n = nums.size();
+        int currMaxSum = nums[0];
+        int maxSum = nums[0];
+
+        for(int i=1; i<n; i++){
+            currMaxSum = max(nums[i], nums[i] + currMaxSum);
+            maxSum = max(maxSum, currMaxSum);
+        }
+
+        return maxSum;
+
+    }
+};
