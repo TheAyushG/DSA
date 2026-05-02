@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+    
+    int n = nums.size();
+    unordered_map<int,int> map;
+
+    for(int i=0; i<n; i++){
+        map[nums[i]]++;
+    }
+
+    for(auto it : map){
+        if(it.second == 1){
+            return it.first;
+        }
+    }
+
+    return -1;
+    
+  }
+};
+
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+    
+    int n = nums.size();
+
+    int ans = 0;
+
+    for(int i=0; i<n; i++){
+        ans ^= nums[i];
+    }
+
+    return ans;
+  }
+};
