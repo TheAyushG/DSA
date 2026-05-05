@@ -1,46 +1,76 @@
+Time - o(n)
+space - O(1)
+-------------------------------------------------------------
+
 class Solution {
 public:
-    vector<int> findDuplicates(vector<int>& nums) {
-
+    int firstMissingPositive(vector<int>& nums) {
+        
         int n = nums.size();
-        vector<int> ans;
+        bool contains1 = false;
 
         for(int i=0; i<n; i++){
-            int index = abs(nums[i]) - 1;
-
-            if(nums[index] < 0){
-                ans.push_back(index + 1);
+            if(nums[i] == 1){
+                contains1 = true;
             }
 
-            else{
-            nums[index] = -nums[index];
+            if(nums[i] <= 0 || nums[i] > n){
+                nums[i] = 1;
             }
         }
 
-        return ans;
+        if(contains1 == false){
+            return 1;
+        }
+
+        for(int i=0; i<n; i++){
+
+            int num = abs(nums[i]);
+
+            int idx = num - 1;
+
+            if(nums[idx] < 0)
+            continue;
+
+            nums[idx] *= -1;
+        }
+
+        for(int i=0; i<n; i++){
+            if(nums[i] > 0){
+                return i+1;
+            }
+        }
+
+        return n+1;
     }
 };
+-------------------------------------------------------------
 
 
 
+
+
+Time - o(n)
+space - O(n)
+    
 class Solution {
 public:
-    vector<int> findDuplicates(vector<int>& nums) {
+    int firstMissingPositive(vector<int>& nums) {
         
-        unordered_map<int,int> map;
         int n = nums.size();
+        vector <bool> seen(n+1, false);
 
         for(int i=0; i<n; i++){
-            int x = nums[i];
-            map[x]++;
+            if(nums[i] > 0 && nums[i] <= n){
+                seen[nums[i]] = true;
+            }
         }
-        
-        vector<int> ans;
-        for(auto it : map){
-            if(it.second > 1)
-           ans.push_back(it.first);
+
+        for(int i=1; i <=n; i++){
+            if(seen[i] == false)
+            return i;
         }
-       
-       return ans;
+
+        return n+1;
     }
 };
