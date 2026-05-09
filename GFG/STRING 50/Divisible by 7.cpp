@@ -1,4 +1,4 @@
-// User function template for C++
+// User function template for C++.
 
 class Solution {
   public:
