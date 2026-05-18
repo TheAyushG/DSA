@@ -1,3 +1,8 @@
+Complexity	Value
+Time = O(n log n)
+Space = O(n)
+------------------------------------------------------
+
 class Solution {
     
     void merge(vector<int>& arr, int l, int m, int r){
