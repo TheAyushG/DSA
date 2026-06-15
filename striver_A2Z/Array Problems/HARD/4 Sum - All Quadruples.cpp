@@ -1,7 +1,11 @@
+---------------------------------------------------------------
+Optimal Approach
+---------------------------------------------------------------
+
 class Solution {
   public:
     vector<vector<int>> fourSum(vector<int> &arr, int target) {
-        // code here
+        
         int n = arr.size();
         vector<vector<int>> ans;
 
