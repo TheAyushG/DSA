@@ -17,7 +17,7 @@ class Solution {
 
             if(count == k){
                 bouquets++;
-                count = 0;      // Flowers cannot be reused
+                count = 0;      // Flowers cannot be reusedd
             }
         }
 
